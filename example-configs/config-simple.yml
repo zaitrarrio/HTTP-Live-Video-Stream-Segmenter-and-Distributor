@@ -10,13 +10,15 @@ log_type: 'STDOUT'
 log_level: 'DEBUG'
 
 # where the origin video is going to come from
-#input_location: '-'
 input_location: '/tmp/test.avi'
 
 # segment length in seconds
 segment_length: 10 
 
 # this is the URL where the stream (ts) files will end up
+# if this location is the same as the location where the m3u8 
+# index is then leave it blank
+# url_prefix: ''
 url_prefix: 'http://192.168.1.1/streamingvideo/'
 
 # how many segments to keep in the index
@@ -29,7 +31,7 @@ source_command: 'cat %s'
 segmenter_binary: './live_segmenter'
 
 # the encoding profile to use
-encoding_profile: [ 'ep_128k', 'ep_386k', 'ep_512k' ]
+encoding_profile: 'ep_128k'
 
 # The upload profile to use
 transfer_profile: 'copy_dev'
@@ -68,7 +70,7 @@ ftp_dev:
 
 scp_dev:
   transfer_type: 'scp'
-  remote_host: '192.168.1.1.'
+  remote_host: '192.168.1.1'
   user_name: 'root'
   #password: 'pass'
   directory: '/web/sites/test.com/html/streamingvideo'
